@@ -2,6 +2,7 @@
 <table name="hearder">
     <head name="序号" width="60"/>
     <head name="报表名称" width="160"/>
-    <head name="打印机" width="120"/>
+    <head name="打印机" width="200"/>
+    <head name="打印预览" width="80"/>
     <head name="打印机状态" width="100"/>
 </table>

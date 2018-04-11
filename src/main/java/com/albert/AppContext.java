@@ -3,7 +3,9 @@
  */
 package com.albert;
 
+import java.awt.print.PrinterJob;
 import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.print.PrintService;
@@ -28,12 +30,12 @@ import net.sf.jasperreports.engine.JasperPrint;
 *  
 */
 public class AppContext {
-	private Set<PrintService> printServices;
+	private Set<String> allPrinter;
 	private CommonService commonService ;
 	private ConfigEntity config;
 	private final Log log = LogFactory.getLog(getClass());
 	
-	private synchronized void initConfig() {
+	public synchronized void initConfig() {
 		try {
 			String str = JsonUtil.readJsonFromStream();
 			ConfigEntity config = JsonUtil.getGson().fromJson(str, ConfigEntity.class).checkPrinter();
@@ -42,6 +44,14 @@ public class AppContext {
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error("初始化失败",e);
+		}
+	}
+	
+	private void initPrinter() {
+		allPrinter = new LinkedHashSet<String>();
+		PrintService[] services = PrinterJob.lookupPrintServices();
+		for(PrintService p : services){
+			allPrinter.add(p.getName());
 		}
 	}
 	/**
@@ -58,12 +68,11 @@ public class AppContext {
 	}
 	
 	
-	
-	
 	private volatile static AppContext context;
     private AppContext(){
-    		initConfig();
-    		commonService = PrintServiceImpl.instance();
+		initConfig();
+		initPrinter();
+		commonService = PrintServiceImpl.instance();
     }
     public static AppContext INSTANCE(){
         if (context == null) {
@@ -75,12 +84,6 @@ public class AppContext {
         }
         return context;
     }
-	public Set<PrintService> getPrintServices() {
-		return printServices;
-	}
-	public void setPrintServices(Set<PrintService> printServices) {
-		this.printServices = printServices;
-	}
 	public ConfigEntity getConfig() {
 		return config;
 	}
@@ -96,5 +99,11 @@ public class AppContext {
 	public static void main(String[] args) {
 		ConfigEntity config = AppContext.INSTANCE().getConfig().checkPrinter();
 		System.out.println(config);
+	}
+	public Set<String> getAllPrinter() {
+		return allPrinter;
+	}
+	public void setAllPrinter(Set<String> allPrinter) {
+		this.allPrinter = allPrinter;
 	}
 }

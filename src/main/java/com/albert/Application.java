@@ -8,14 +8,11 @@ import org.apache.log4j.Logger;
 import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
 
 import com.albert.ui.SetWindow;
-import com.albert.utils.ConfigUtil;
 
 import net.sf.jasperreports.view.JasperViewer;
 
 
-/** 
- * Run Server
- */
+
 public class Application {
 	private static Logger logger = Logger.getLogger(Application.class);
 	public static void main(String[] args) {
@@ -44,8 +41,6 @@ public class Application {
                 }
                 context.print(url);
             }
-            
-            
             
         } catch (Exception e) {
             e.printStackTrace();
