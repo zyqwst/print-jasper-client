@@ -1,7 +1,5 @@
 package com.albert;
 
-import java.awt.EventQueue;
-
 import javax.swing.UIManager;
 
 import org.apache.log4j.Logger;
@@ -17,23 +15,17 @@ public class Application {
 	private static Logger logger = Logger.getLogger(Application.class);
 	public static void main(String[] args) {
 		AppContext context = AppContext.INSTANCE();
+		SetWindow window;
         try {
-        	BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
+            BeautyEyeLNFHelper.translucencyAtFrameInactive = false;
             BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
             UIManager.put("ToolBar.isPaintPlainBackground", Boolean.TRUE);
             BeautyEyeLNFHelper.launchBeautyEyeLNF();
-    		JasperViewer.setDefaultLookAndFeelDecorated(false);
+    			JasperViewer.setDefaultLookAndFeelDecorated(false);
+    			window = context.getWindow();
             String url = null;
             if(args.length==0) {
-            	EventQueue.invokeLater(new Runnable() {
-                    public void run() {
-                        try {
-                            new SetWindow();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+            		window.visible(true);
             }else {
 	            	for(String arg : args){
                     url = arg.substring(arg.indexOf(":")+3);

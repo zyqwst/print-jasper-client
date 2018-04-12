@@ -2,6 +2,8 @@ package com.albert.service.impl;
 
 import java.io.InputStream;
 
+import javax.print.PrintService;
+
 import net.sf.jasperreports.engine.JasperPrint;
 
 import com.albert.service.CommonService;
@@ -33,6 +35,10 @@ public class PrintServiceImpl implements CommonService {
 	@Override
 	public void print(JasperPrint jasper) throws Exception {
 		JasperUtil.printJasper(jasper);
+	}
+	@Override
+	public void print(JasperPrint jasper, PrintService print) throws Exception {
+		JasperUtil.print(jasper, print);
 	}
 
 }

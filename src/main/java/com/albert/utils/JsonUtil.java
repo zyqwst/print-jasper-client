@@ -5,10 +5,8 @@ package com.albert.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -82,13 +80,19 @@ public class JsonUtil {
 	 */
 	public static void writeJson(String json) throws Exception{
 		try {
-			FileOutputStream file = new FileOutputStream("sbconfig.json");
-			PrintWriter writer = new PrintWriter(file);
+			File file = new File(JsonUtil.class.getResource("/").getPath()+"sbconfig.json");
+			FileOutputStream out = new FileOutputStream(file);
+			PrintWriter writer = new PrintWriter(out);
 			writer.write(json);
 			writer.close();
 		} catch (FileNotFoundException e) {
 			throw new Exception("file not found：");
 		}
+	}
+	
+	
+	public static void main(String[] args) throws Exception {
+		writeJson("abc");
 	}
 	
 	public static InputStream getJsonConfig(){

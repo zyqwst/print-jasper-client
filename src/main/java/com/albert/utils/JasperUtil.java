@@ -28,7 +28,10 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRPrintServiceExporter;
 import net.sf.jasperreports.engine.export.JRPrintServiceExporterParameter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimplePrintServiceExporterConfiguration;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -160,47 +163,33 @@ public class JasperUtil {
 		// 直接打印 true显示打印机设置
 		JasperPrintManager.printReport(jasperPrint, false);
 	}
-
 	/**
-	 * 指定的打印机
-	 * 
-	 * @param fileName
-	 * @param params
-	 * @param conn
-	 * @param printer
-	 * @throws JRException
+	 * 指定打印机打印
+	 * @param jasperPrint
+	 * @param printService
+	 * @throws Exception
 	 */
-	public static void preview(String fileName, Map<String, Object> params, Connection conn,
-			PrintService printerService) throws JRException {
-		JasperReport jasperReport = null;
-		JasperPrint jasperPrint = null;
-		InputStream inReport = null;
-		try {
-			inReport = new FileInputStream(fileName);
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		try {
-			jasperReport = JasperCompileManager.compileReport(inReport);
-			jasperPrint = JasperFillManager.fillReport(jasperReport, params, conn);
+	public static void print(JasperPrint jasperPrint,PrintService printService) throws Exception{
+	    try {
+			PrintRequestAttributeSet printRequestAttributeSet = new HashPrintRequestAttributeSet();
+
+			PrintServiceAttributeSet printServiceAttributeSet = new HashPrintServiceAttributeSet();
+			printServiceAttributeSet.add(new PrinterName(printService.getName(),null));
+			JRPrintServiceExporter exporter = new JRPrintServiceExporter();
+			
+			exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+			SimplePrintServiceExporterConfiguration configuration = new SimplePrintServiceExporterConfiguration();
+			configuration.setPrintRequestAttributeSet(printRequestAttributeSet);
+			configuration.setPrintServiceAttributeSet(printServiceAttributeSet);
+			configuration.setDisplayPageDialog(false);
+			configuration.setDisplayPrintDialog(true);
+			exporter.setConfiguration(configuration);
+			exporter.exportReport();
 		} catch (JRException e) {
 			e.printStackTrace();
+			throw new Exception(e);
 		}
-		PrintRequestAttributeSet printRequestAttributeSet = new HashPrintRequestAttributeSet();
-
-		PrintServiceAttributeSet printServiceAttributeSet = new HashPrintServiceAttributeSet();
-		printServiceAttributeSet.add(new PrinterName(printerService.getName(), null));
-
-		JRAbstractExporter je = new MyJRPrintServiceExporter();
-
-		// 设置打印内容
-		je.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-		// 设置指定打印机
-		je.setParameter(JRPrintServiceExporterParameter.PRINT_SERVICE, printerService);
-		je.exportReport();
-
-	}
+	  }
 	public static void printJasper(JasperPrint jasperPrint ) throws Exception {
 
 		// 预览
@@ -209,6 +198,7 @@ public class JasperUtil {
 		// 直接打印 true显示打印机设置
 		// JasperPrintManager.printReport(jasperPrint, false);
 	}
+	
 	public static void main(String[] args) throws JRException {
 		JasperReport jasperReport = null;
 		JasperPrint jasperPrint = null;

@@ -1,0 +1,21 @@
+[ERROR] 2018-04-12 10:32:59 AppContext@(AppContext.java:47):初始化失败
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:224)
+	at com.google.gson.Gson.fromJson(Gson.java:887)
+	at com.google.gson.Gson.fromJson(Gson.java:852)
+	at com.google.gson.Gson.fromJson(Gson.java:801)
+	at com.google.gson.Gson.fromJson(Gson.java:773)
+	at com.albert.AppContext.initConfig(AppContext.java:42)
+	at com.albert.AppContext.<init>(AppContext.java:74)
+	at com.albert.AppContext.INSTANCE(AppContext.java:82)
+	at com.albert.Application.main(Application.java:19)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:213)
+	... 8 more
+[ERROR] 2018-04-12 10:35:00 AppContext@(AppContext.java:47):初始化失败
+java.lang.NullPointerException
+	at com.albert.AppContext.initConfig(AppContext.java:42)
+	at com.albert.AppContext.<init>(AppContext.java:74)
+	at com.albert.AppContext.INSTANCE(AppContext.java:82)
+	at com.albert.Application.main(Application.java:19)
