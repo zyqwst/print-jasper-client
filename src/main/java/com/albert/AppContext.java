@@ -53,10 +53,10 @@ public class AppContext {
 	}
 	
 	private void initPrinter() {
-		allPrinter = new HashMap<String,PrintService>();
+		setAllPrinter(new HashMap<String,PrintService>());
 		PrintService[] services = PrinterJob.lookupPrintServices();
 		for(PrintService p : services){
-			allPrinter.put(p.getName(), p);
+			getAllPrinter().put(p.getName(), p);
 		}
 	}
 	/**
@@ -85,8 +85,19 @@ public class AppContext {
 			config.getJasperPrinters().add(j);
 			saveConfig();
 			window.visible(true);
-		}else {			
-			commonService.print(jasper);
+			window.fillTable();
+		}else {	
+			PrintService p = allPrinter.get(printer.getPrinter());
+			System.out.println("已绑定打印机：");
+			System.out.println(p);
+			if(printer.getPreview()) {				
+				commonService.print(jasper);
+			}
+			else if(p!=null){
+				commonService.print(jasper, p);
+			}else {
+				commonService.print(jasper);
+			}
 		}
 	}
 	
@@ -120,6 +131,7 @@ public class AppContext {
     
     public void saveConfig() throws Exception {
     		try {
+    			config.checkPrinter();
 				JsonUtil.writeObject(config);
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -138,19 +150,18 @@ public class AppContext {
 	public void setCommonService(CommonService commonService) {
 		this.commonService = commonService;
 	}
-	public static void main(String[] args) {
-		ConfigEntity config = AppContext.INSTANCE().getConfig().checkPrinter();
-		System.out.println(config);
-	}
-	public Set<String> getAllPrinter() {
-		return allPrinter;
-	}
-	public void setAllPrinter(Set<String> allPrinter) {
-		this.allPrinter = allPrinter;
-	}
 
 	public SetWindow getWindow() {
-		return this.window==null? new SetWindow(this):this.window;
+		if(this.window==null) this.window = new SetWindow(this);
+		return this.window;
+	}
+
+	public Map<String,PrintService> getAllPrinter() {
+		return allPrinter;
+	}
+
+	public void setAllPrinter(Map<String,PrintService> allPrinter) {
+		this.allPrinter = allPrinter;
 	}
 
 }

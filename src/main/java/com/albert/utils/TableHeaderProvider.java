@@ -54,7 +54,7 @@ public class TableHeaderProvider {
         SAXReader reader = new SAXReader();  
         Document document = null;  
         try {  
-            document = reader.read(TableHeaderProvider.class.getResource("")+file);  
+            document = reader.read(TableHeaderProvider.class.getResource("/").getPath()+file);  
         } catch (DocumentException e) {  
             e.printStackTrace();  
         }  

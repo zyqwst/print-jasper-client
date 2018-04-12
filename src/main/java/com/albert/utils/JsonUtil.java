@@ -4,13 +4,16 @@
 package com.albert.utils;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -50,7 +53,7 @@ public class JsonUtil {
 	public static String readJsonFromFile(InputStream path) throws Exception{
 		StringBuffer str;
 		try {
-			InputStreamReader is= new InputStreamReader(path);
+			InputStreamReader is= new InputStreamReader(path,Charset.forName("utf-8"));
 			BufferedReader bufReader=new BufferedReader(is);
 			str = new StringBuffer();
 			String line = null;
@@ -81,10 +84,13 @@ public class JsonUtil {
 	public static void writeJson(String json) throws Exception{
 		try {
 			File file = new File(JsonUtil.class.getResource("/").getPath()+"sbconfig.json");
-			FileOutputStream out = new FileOutputStream(file);
-			PrintWriter writer = new PrintWriter(out);
-			writer.write(json);
-			writer.close();
+			
+			
+			OutputStreamWriter write = new OutputStreamWriter(new FileOutputStream(file),"utf-8");      
+	        BufferedWriter writer=new BufferedWriter(write);          
+	        writer.write(json);      
+	        writer.close(); 
+			
 		} catch (FileNotFoundException e) {
 			throw new Exception("file not found：");
 		}

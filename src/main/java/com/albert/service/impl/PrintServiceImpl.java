@@ -19,17 +19,6 @@ public class PrintServiceImpl implements CommonService {
     }
 	@Override
 	public void print(String xml,String json) throws Exception{
-		InputStream in = null;
-		try {
-			in = XmlUtil.str2InputStream(xml);
-			JasperUtil.printJson(in, json);
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new Exception("打印出错："+e.getMessage());
-		} finally{
-		    if(in!=null)
-		    in.close();
-		}
 		
 	}
 	@Override

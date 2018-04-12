@@ -12,7 +12,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Map;
 
+import javax.print.PrintService;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
@@ -96,7 +98,7 @@ public class SetWindow {
         
         final JComboBox printer_cb = new JComboBox();
         
-        for(String s : AppContext.INSTANCE().getAllPrinter()) {
+        for(String s : AppContext.INSTANCE().getAllPrinter().keySet()) {
         	printer_cb.addItem(s);
         }
         
@@ -185,7 +187,7 @@ public class SetWindow {
 			}
 		});
     }
-    private void fillTable(){
+    public void fillTable(){
     	DefaultTableModel tableModel = (DefaultTableModel) table
     	        .getModel();
     	        tableModel.setRowCount(0);

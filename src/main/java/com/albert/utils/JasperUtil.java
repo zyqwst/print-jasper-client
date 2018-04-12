@@ -1,5 +1,7 @@
 package com.albert.utils;
 
+import java.awt.PrintJob;
+import java.awt.print.PrinterJob;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -42,29 +44,6 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class JasperUtil {
 
-	/**
-	 * 打印预览(javabean)
-	 * 
-	 * @param fileName
-	 * @param list
-	 * @throws JRException
-	 */
-	public static <T extends EntityBase> void printJson(InputStream inReport, String json) throws Exception {
-
-		JasperReport jasperReport = null;
-		JasperPrint jasperPrint = null;
-		HashMap<String, Object> paramsMap = new HashMap<String, Object>();
-		InputStream is = new ByteArrayInputStream(json.getBytes());
-		paramsMap.put("JSON_INPUT_STREAM", is);
-		jasperReport = JasperCompileManager.compileReport(inReport);
-		jasperPrint = JasperFillManager.fillReport(jasperReport, paramsMap);
-		// 预览
-		JasperViewer.setDefaultLookAndFeelDecorated(false);
-		JasperViewer.viewReport(jasperPrint, false);
-
-		// 直接打印 true显示打印机设置
-		// JasperPrintManager.printReport(jasperPrint, false);
-	}
 
 	/**
 	 * 指定的打印机(javabean)
@@ -182,7 +161,7 @@ public class JasperUtil {
 			configuration.setPrintRequestAttributeSet(printRequestAttributeSet);
 			configuration.setPrintServiceAttributeSet(printServiceAttributeSet);
 			configuration.setDisplayPageDialog(false);
-			configuration.setDisplayPrintDialog(true);
+			configuration.setDisplayPrintDialog(false);
 			exporter.setConfiguration(configuration);
 			exporter.exportReport();
 		} catch (JRException e) {
@@ -191,20 +170,25 @@ public class JasperUtil {
 		}
 	  }
 	public static void printJasper(JasperPrint jasperPrint ) throws Exception {
-
-		// 预览
 		JasperViewer.viewReport(jasperPrint, false);
+	}
+	/**
+	 * 选择打印机后打印
+	 * @param jasperPrint
+	 * @throws Exception
+	 */
+	public static void printSet(JasperPrint jasperPrint ) throws Exception {
 
-		// 直接打印 true显示打印机设置
-		// JasperPrintManager.printReport(jasperPrint, false);
+		JasperPrintManager.printReport(jasperPrint, true);
 	}
 	
-	public static void main(String[] args) throws JRException {
+	
+	public static void main(String[] args) throws Exception {
 		JasperReport jasperReport = null;
 		JasperPrint jasperPrint = null;
 		InputStream inReport = null;
 		try {
-			inReport = new FileInputStream("resources/outorder_blank.jrxml");
+			inReport = new FileInputStream(JsonUtil.class.getResource("/").getPath()+"demo2.jrxml");
 		} catch (FileNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -218,7 +202,12 @@ public class JasperUtil {
 			e.printStackTrace();
 		}
 		// 预览
-		JasperViewer.setDefaultLookAndFeelDecorated(false);
-		JasperViewer.viewReport(jasperPrint, false);
+		PrintService[] printServices = PrinterJob.lookupPrintServices();
+		for(PrintService p : printServices) {
+			if(p.getName().equals("Microsoft XPS Document_jsd")) {
+				System.out.println("打印");
+				print(jasperPrint, p);
+			}
+		}
 	}
 }
