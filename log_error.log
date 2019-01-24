@@ -19,3 +19,20 @@ java.lang.NullPointerException
 	at com.albert.AppContext.<init>(AppContext.java:74)
 	at com.albert.AppContext.INSTANCE(AppContext.java:82)
 	at com.albert.Application.main(Application.java:19)
+[ERROR] 2019-01-24 15:04:09 AppContext@(AppContext.java:51):初始化失败
+java.lang.NullPointerException
+	at java.io.Reader.<init>(Reader.java:78)
+	at java.io.InputStreamReader.<init>(InputStreamReader.java:113)
+	at com.albert.utils.JsonUtil.readJsonFromFile(JsonUtil.java:56)
+	at com.albert.utils.JsonUtil.readJsonFromStream(JsonUtil.java:44)
+	at com.albert.AppContext.initConfig(AppContext.java:45)
+	at com.albert.AppContext.<init>(AppContext.java:107)
+	at com.albert.AppContext.INSTANCE(AppContext.java:115)
+	at com.albert.Application.main(Application.java:17)
+[ERROR] 2019-01-24 15:04:12 Application@(Application.java:39):
+java.lang.NullPointerException
+	at com.albert.ui.SetWindow.fillTable(SetWindow.java:196)
+	at com.albert.ui.SetWindow.initialize(SetWindow.java:175)
+	at com.albert.ui.SetWindow.<init>(SetWindow.java:56)
+	at com.albert.AppContext.getWindow(AppContext.java:155)
+	at com.albert.Application.main(Application.java:25)
