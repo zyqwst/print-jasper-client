@@ -9,12 +9,11 @@
 - [自定义Protocol URL从浏览器运行本地应用](https://www.jianshu.com/p/8ba7fefeb7ad)
 
 **流程图**
-![流程图](https://upload-images.jianshu.io/upload_images/2287481-918f3874d759572c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+<p align="center">
+  <img width="500" src="https://upload-images.jianshu.io/upload_images/2287481-918f3874d759572c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
+</p>
 
 ## 开发思路
 
 **问  题：** B/S架构下，客户在浏览器查询到数据后，打印单据到指定打印机，但是浏览器不支持个性化打印操作。
 **解决思路：** 用户在浏览器点击`打印`，服务器生成报表，并提供访问报表的唯一URL响应给浏览器，浏览器通过windows的 `Protocol URL `协议，唤醒本地打印程序，传递URL到打印程序；然后打印程序访问给定的URL地址获取数据并打印。
-<p align="center">
-  <img width="500" src="https://upload-images.jianshu.io/upload_images/2287481-918f3874d759572c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp">
-</p>
