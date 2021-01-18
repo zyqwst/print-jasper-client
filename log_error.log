@@ -36,3 +36,46 @@ java.lang.NullPointerException
 	at com.albert.ui.SetWindow.<init>(SetWindow.java:56)
 	at com.albert.AppContext.getWindow(AppContext.java:155)
 	at com.albert.Application.main(Application.java:25)
+[WARN ] 2021-01-18 20:08:08 JRJdbcQueryExecuter@(JRJdbcQueryExecuter.java:146):The supplied java.sql.Connection object is null.
+[WARN ] 2021-01-18 20:11:36 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:11:36 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:11:36 JRTextFieldFactory@(JRTextFieldFactory.java:66):The 'isStretchWithOverflow' attribute is deprecated. Use the 'textAdjust' attribute instead.
+[WARN ] 2021-01-18 20:11:36 JRTextFieldFactory@(JRTextFieldFactory.java:66):The 'isStretchWithOverflow' attribute is deprecated. Use the 'textAdjust' attribute instead.
+[WARN ] 2021-01-18 20:11:36 JRTextFieldFactory@(JRTextFieldFactory.java:66):The 'isStretchWithOverflow' attribute is deprecated. Use the 'textAdjust' attribute instead.
+[WARN ] 2021-01-18 20:11:53 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:11:53 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:11:53 JRTextFieldFactory@(JRTextFieldFactory.java:66):The 'isStretchWithOverflow' attribute is deprecated. Use the 'textAdjust' attribute instead.
+[WARN ] 2021-01-18 20:11:53 JRTextFieldFactory@(JRTextFieldFactory.java:66):The 'isStretchWithOverflow' attribute is deprecated. Use the 'textAdjust' attribute instead.
+[WARN ] 2021-01-18 20:11:53 JRTextFieldFactory@(JRTextFieldFactory.java:66):The 'isStretchWithOverflow' attribute is deprecated. Use the 'textAdjust' attribute instead.
+[WARN ] 2021-01-18 20:12:24 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:12:24 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:12:43 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:12:43 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:13:08 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:13:08 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:35:44 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:35:44 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:35:58 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:35:58 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:36:00 PdfGlyphRenderer@(PdfGlyphRenderer.java:64):Unpatched iText found, cannot use glyph rendering
+[WARN ] 2021-01-18 20:36:19 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:36:19 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:36:21 PdfGlyphRenderer@(PdfGlyphRenderer.java:64):Unpatched iText found, cannot use glyph rendering
+[WARN ] 2021-01-18 20:36:30 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:36:30 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:36:31 PdfGlyphRenderer@(PdfGlyphRenderer.java:64):Unpatched iText found, cannot use glyph rendering
+[WARN ] 2021-01-18 20:40:21 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:40:21 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:40:23 PdfGlyphRenderer@(PdfGlyphRenderer.java:64):Unpatched iText found, cannot use glyph rendering
+[WARN ] 2021-01-18 20:40:27 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:40:27 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:40:29 PdfGlyphRenderer@(PdfGlyphRenderer.java:64):Unpatched iText found, cannot use glyph rendering
+[WARN ] 2021-01-18 20:42:38 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:42:38 JRBandFactory@(JRBandFactory.java:57):The 'isSplitAllowed' attribute is deprecated. Use the 'splitType' attribute instead.
+[WARN ] 2021-01-18 20:42:40 PdfGlyphRenderer@(PdfGlyphRenderer.java:64):Unpatched iText found, cannot use glyph rendering
+[WARN ] 2021-01-18 20:45:33 JRJdbcQueryExecuter@(JRJdbcQueryExecuter.java:146):The supplied java.sql.Connection object is null.
+[WARN ] 2021-01-18 20:45:33 PdfGlyphRenderer@(PdfGlyphRenderer.java:64):Unpatched iText found, cannot use glyph rendering
+[WARN ] 2021-01-18 20:48:52 JRJdbcQueryExecuter@(JRJdbcQueryExecuter.java:146):The supplied java.sql.Connection object is null.
+[WARN ] 2021-01-18 20:52:00 JRJdbcQueryExecuter@(JRJdbcQueryExecuter.java:146):The supplied java.sql.Connection object is null.
+[WARN ] 2021-01-18 20:53:54 JRJdbcQueryExecuter@(JRJdbcQueryExecuter.java:146):The supplied java.sql.Connection object is null.
+[WARN ] 2021-01-18 20:54:55 PdfGlyphRenderer@(PdfGlyphRenderer.java:64):Unpatched iText found, cannot use glyph rendering

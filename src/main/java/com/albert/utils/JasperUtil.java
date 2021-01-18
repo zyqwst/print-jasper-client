@@ -1,11 +1,6 @@
 package com.albert.utils;
 
-import java.awt.PrintJob;
-import java.awt.print.PrinterJob;
-import java.io.ByteArrayInputStream;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
+import java.io.*;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.List;
@@ -19,21 +14,11 @@ import javax.print.attribute.PrintServiceAttributeSet;
 import javax.print.attribute.standard.PrinterName;
 import javax.swing.JOptionPane;
 
-import com.albert.model.EntityBase;
-
-import net.sf.jasperreports.engine.JRAbstractExporter;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRExporterParameter;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.JRPrintServiceExporter;
 import net.sf.jasperreports.engine.export.JRPrintServiceExporterParameter;
-import net.sf.jasperreports.export.SimpleExporterInput;
-import net.sf.jasperreports.export.SimplePrintServiceExporterConfiguration;
+import net.sf.jasperreports.export.*;
 import net.sf.jasperreports.view.JasperViewer;
 
 /**
@@ -188,26 +173,14 @@ public class JasperUtil {
 		JasperPrint jasperPrint = null;
 		InputStream inReport = null;
 		try {
-			inReport = new FileInputStream(JsonUtil.class.getResource("/").getPath()+"demo2.jrxml");
-		} catch (FileNotFoundException e1) {
+			inReport = new FileInputStream(JsonUtil.class.getResource("/").getPath()+ "demo.jrxml");
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			params.put("param", "22");
-			jasperReport = JasperCompileManager.compileReport(inReport);
-			jasperPrint = JasperFillManager.fillReport(jasperReport, params);
-		} catch (JRException e) {
-			e.printStackTrace();
-		}
-		// 预览
-		PrintService[] printServices = PrinterJob.lookupPrintServices();
-		for(PrintService p : printServices) {
-			if(p.getName().equals("Microsoft XPS Document_jsd")) {
-				System.out.println("打印");
-				print(jasperPrint, p);
-			}
-		}
+		jasperReport = JasperCompileManager.compileReport(inReport);
+		jasperPrint = JasperFillManager.fillReport(jasperReport,new HashMap<>());
+
+		JasperExportManager.exportReportToPdfFile(jasperPrint,"./e.pdf");
 	}
 }
