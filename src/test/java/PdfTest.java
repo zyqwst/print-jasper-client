@@ -42,7 +42,7 @@ public class PdfTest {
         //导出PDF
         JasperExportManager.exportReportToPdfFile(jasperPrint,"./测试PDF.pdf");
         //预览
-        JasperViewer.setDefaultLookAndFeelDecorated(false);
-        JasperViewer.viewReport(jasperPrint, false);
+//        JasperViewer.setDefaultLookAndFeelDecorated(false);
+//        JasperViewer.viewReport(jasperPrint, false);
     }
 }
